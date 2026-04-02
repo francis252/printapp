@@ -1,0 +1,18 @@
+{
+  "name": "Logo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the logo"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the uploaded logo image"
+    }
+  },
+  "required": [
+    "name",
+    "image_url"
+  ]
+}
