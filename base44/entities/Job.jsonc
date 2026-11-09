@@ -1,0 +1,125 @@
+{
+  "name": "Job",
+  "type": "object",
+  "properties": {
+    "job_number": {
+      "type": "string"
+    },
+    "quote_id": {
+      "type": "string"
+    },
+    "quote_number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "customer_id": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "sales_rep": {
+      "type": "string"
+    },
+    "total_amount": {
+      "type": "number"
+    },
+    "deposit_paid": {
+      "type": "number"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "production_note_1": {
+      "type": "string",
+      "description": "Custom production note / field 1"
+    },
+    "production_note_2": {
+      "type": "string",
+      "description": "Custom production note / field 2"
+    },
+    "in_production": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this job is active on the Production Board"
+    },
+    "status_job_printed": {
+      "type": "string",
+      "enum": [
+        "",
+        "DONE"
+      ],
+      "default": ""
+    },
+    "status_account": {
+      "type": "string",
+      "enum": [
+        "",
+        "HOLD ORDER",
+        "INVOICE CREATED",
+        "COMPLETE"
+      ],
+      "default": ""
+    },
+    "status_purchasing": {
+      "type": "string",
+      "enum": [
+        "",
+        "ORDERED",
+        "COMPLETE"
+      ],
+      "default": ""
+    },
+    "status_artwork": {
+      "type": "string",
+      "enum": [
+        "",
+        "ART SUPPLIED",
+        "IN PROGRESS",
+        "PROOF SENT",
+        "FOLLOW UP PROOF",
+        "SOME PROOFS REJECTED",
+        "PROOF REJECTED",
+        "SOME PROOFS APPROVED",
+        "PROOF APPROVED"
+      ],
+      "default": ""
+    },
+    "status_production": {
+      "type": "string",
+      "enum": [
+        "",
+        "IN PRODUCTION",
+        "COMPLETE"
+      ],
+      "default": ""
+    },
+    "status_shipping": {
+      "type": "string",
+      "enum": [
+        "",
+        "READY",
+        "SHIPPED",
+        "DELIVERED",
+        "COMPLETE"
+      ],
+      "default": ""
+    }
+  },
+  "required": [
+    "title",
+    "customer_name"
+  ]
+}

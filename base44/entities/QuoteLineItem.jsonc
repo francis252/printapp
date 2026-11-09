@@ -1,0 +1,123 @@
+{
+  "name": "QuoteLineItem",
+  "type": "object",
+  "properties": {
+    "quote_id": {
+      "type": "string"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0
+    },
+    "item_type": {
+      "type": "string",
+      "enum": [
+        "catalog",
+        "freeflow"
+      ],
+      "default": "catalog"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "style_number": {
+      "type": "string"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "decoration_method": {
+      "type": "string"
+    },
+    "decoration_colors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hex": {
+            "type": "string"
+          },
+          "color_type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "total_quantity": {
+      "type": "number",
+      "default": 0
+    },
+    "unit_price": {
+      "type": "number",
+      "default": 0
+    },
+    "discount_percent": {
+      "type": "number",
+      "default": 0
+    },
+    "discounted_unit_price": {
+      "type": "number",
+      "default": 0
+    },
+    "line_total": {
+      "type": "number",
+      "default": 0
+    },
+    "product_image_url": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "mockups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "quote_id",
+    "product_name"
+  ]
+}

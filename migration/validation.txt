@@ -1,0 +1,54 @@
+
+> 4r-shop-management@0.0.0 test
+> node --test tests/*.test.mjs
+
+✔ adapter scopes every page, uses numeric JSON order and honors legacy limits (7.579579ms)
+✔ storage persists stable refs and re-signs after reload without changing mockup source (0.799551ms)
+▶ database isolation, revision checks and transactional presentation conversion
+  ✔ cross-shop writes and identity forgery fail (6.880879ms)
+  ✔ metadata is stamped and records keep legacy text ids (0.751149ms)
+  ✔ patches merge and reject stale revisions (3.748712ms)
+  ✔ conversion preserves original picker prices, sizes and mockup output (7.133999ms)
+  ✔ missing selection and stale conversion cannot leave partial quotes (3.433329ms)
+  ✔ foreign customer references cannot cross shops (3.161189ms)
+  ✔ employee cannot read financials or another employee presentation (3.417896ms)
+  ✔ another shop cannot read or convert shop A records (1.941006ms)
+  ✔ anonymous users have no records or conversion access (1.478922ms)
+  ✔ private storage rejects a cross-shop upload path (4.257638ms)
+  ✔ pricing settings are shared but only managers can change them (7.290524ms)
+  ✔ customer sharing only releases a whitelisted snapshot (18.831906ms)
+  ✔ sharing cannot sign another shop artwork path (2.215538ms)
+✔ database isolation, revision checks and transactional presentation conversion (1503.986489ms)
+✔ all original quote, pricing, product and mockup files are byte-identical (3.015752ms)
+✔ metadata cannot overwrite authoritative record identity (0.946432ms)
+✔ only our signed storage URLs become durable private references (0.236335ms)
+✔ CSV treats formulas as text and escapes customer content (0.383496ms)
+✔ report dates use Chicago calendar boundaries through daylight savings (16.809207ms)
+✔ receivables exclude drafts/voids and correctly age outstanding balances (0.306621ms)
+✔ supplier browse preserves the exported picker response and validates short searches (1.067654ms)
+✔ style lookup retains color deduplication, size order and lowest supplier cost (1.06484ms)
+✔ style-number lookup preserves original mockup color/image field names (0.310987ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1635.896374
+
+> 4r-shop-management@0.0.0 build
+> vite build
+
+vite v6.4.1 building for production...
+transforming...
+✓ 2896 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                           0.52 kB │ gzip:   0.32 kB
+dist/assets/index-DYrxBX73.css           91.98 kB │ gzip:  15.64 kB
+dist/assets/purify.es-B9ZVCkUG.js        22.64 kB │ gzip:   8.75 kB
+dist/assets/index.es-6h8P1pLi.js        159.42 kB │ gzip:  53.45 kB
+dist/assets/jspdf.es.min-CFwxZkKL.js    390.46 kB │ gzip: 128.63 kB
+dist/assets/index-D15IicAI.js         1,193.44 kB │ gzip: 321.80 kB
+✓ built in 5.87s

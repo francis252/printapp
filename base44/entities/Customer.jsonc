@@ -1,0 +1,46 @@
+{
+  "name": "Customer",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "description": "Primary / quote email"
+    },
+    "payment_email": {
+      "type": "string",
+      "description": "Email to send payment links to"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "billing_address": {
+      "type": "string"
+    },
+    "shipping_address": {
+      "type": "string"
+    },
+    "tax_exempt": {
+      "type": "boolean",
+      "default": false
+    },
+    "w9_url": {
+      "type": "string",
+      "description": "Uploaded W9 file URL"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "company_name"
+  ]
+}

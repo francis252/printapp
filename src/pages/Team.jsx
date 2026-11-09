@@ -1,0 +1,10 @@
+import {useEffect,useState} from 'react';
+import {supabase} from '@/api/supabaseClient';
+import {useAuth} from '@/lib/AuthContext';
+import ManagerOnly from '@/components/ManagerOnly';
+export default function Team(){return <ManagerOnly><TeamList/></ManagerOnly>;}
+function TeamList(){
+ const {membership}=useAuth();const [members,setMembers]=useState([]),[error,setError]=useState(''),[loading,setLoading]=useState(true);
+ useEffect(()=>{let live=true;supabase.from('shop_members').select('user_id,role,display_name').eq('org_id',membership.org_id).then(({data,error})=>{if(live){if(error)setError(error.message);else setMembers(data);setLoading(false);}});return()=>{live=false;};},[membership.org_id]);
+ return <div className="shop-page"><header className="shop-page-header"><div><p className="shop-eyebrow">People & permissions</p><h1>Your team</h1><p className="mt-2 text-slate-500">Access assigned to this shop.</p></div></header>{error&&<p className="shop-error" role="alert">{error}</p>}<div className="shop-panel"><table className="shop-table"><thead><tr><th>Member</th><th>Role</th></tr></thead><tbody>{members.map(m=><tr key={m.user_id}><td>{m.display_name||m.user_id}</td><td><span className="shop-pill">{m.role}</span></td></tr>)}</tbody></table>{loading&&<p className="shop-empty">Loading members…</p>}</div><div className="mt-8 grid md:grid-cols-3 gap-5">{[['Owner','All shop records and financial reports. Membership changes require a secured administrator workflow.'],['Manager','All shop records, presentations, financial records and reports.'],['Employee','Operational records and their own presentations. No invoice or expense access.']].map(([r,d])=><div className="shop-panel p-5" key={r}><h2 className="font-semibold mb-2">{r}</h2><p className="text-sm text-slate-500">{d}</p></div>)}</div><p className="text-sm text-slate-500 mt-6">Invitations and role changes will be enabled after the administrator endpoint is connected. The database currently prevents members from changing their own permissions.</p></div>;
+}
