@@ -7,6 +7,8 @@ function isSafeKey(value) {
   try { return JSON.parse(atob(value.split('.')[1])).role === 'anon'; } catch { return false; }
 }
 export const isConfigured = Boolean(url && /^https:\/\//.test(url) && isSafeKey(key));
+// Capture recovery intent before the auth client consumes the URL fragment.
+export const isRecoveryRedirect = typeof window !== 'undefined' && new URLSearchParams(window.location.hash.slice(1)).get('type') === 'recovery';
 export const supabase = isConfigured ? createClient(url, key) : null;
 export function requireClient() {
   if (!supabase) throw new Error('Supabase is not configured. Set the project URL and publishable key.');
