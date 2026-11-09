@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,75 +6,39 @@
 
 @layer base {
   :root {
-    --font-inter: 'Inter', sans-serif;
-    --background: 210 15% 97%;
-    --foreground: 220 15% 12%;
+    --background: 40 30% 98%;
+    --foreground: 215 25% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 12%;
+    --card-foreground: 215 25% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 12%;
-    --primary: 200 35% 48%;
+    --popover-foreground: 215 25% 15%;
+    --primary: 208 50% 20%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 92%;
-    --secondary-foreground: 220 15% 18%;
-    --muted: 220 15% 88%;
-    --muted-foreground: 220 8% 45%;
-    --accent: 160 28% 72%;
-    --accent-foreground: 160 35% 28%;
-    --destructive: 0 72% 51%;
+    --secondary: 210 15% 92%;
+    --secondary-foreground: 215 25% 20%;
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 15% 50%;
+    --accent: 35 38% 79%;
+    --accent-foreground: 208 50% 20%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 18% 84%;
-    --input: 220 18% 84%;
-    --ring: 200 35% 48%;
-    --chart-1: 200 35% 48%;
-    --chart-2: 160 28% 56%;
-    --chart-3: 220 25% 35%;
-    --chart-4: 45 35% 62%;
-    --chart-5: 200 25% 68%;
-    --radius: 0.75rem;
-    --sidebar-background: 210 12% 96%;
-    --sidebar-foreground: 220 15% 18%;
-    --sidebar-primary: 200 35% 48%;
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 191 85% 42%;
+    --chart-1: 191 85% 42%;
+    --chart-2: 160 55% 40%;
+    --chart-3: 42 85% 52%;
+    --chart-4: 340 65% 55%;
+    --chart-5: 280 55% 50%;
+    --radius: 0.5rem;
+    --sidebar-background: 215 35% 18%;
+    --sidebar-foreground: 210 20% 80%;
+    --sidebar-primary: 191 85% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 160 28% 82%;
-    --sidebar-accent-foreground: 160 35% 28%;
-    --sidebar-border: 220 18% 88%;
-    --sidebar-ring: 200 35% 48%;
-  }
-
-  .dark {
-    --background: 220 20% 9%;
-    --foreground: 210 15% 92%;
-    --card: 220 18% 12%;
-    --card-foreground: 210 15% 92%;
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 15% 92%;
-    --primary: 200 40% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 15% 92%;
-    --muted: 220 18% 22%;
-    --muted-foreground: 220 8% 52%;
-    --accent: 160 32% 52%;
-    --accent-foreground: 160 35% 88%;
-    --destructive: 0 68% 58%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 18% 18%;
-    --input: 220 18% 18%;
-    --ring: 200 40% 58%;
-    --chart-1: 200 40% 58%;
-    --chart-2: 160 32% 62%;
-    --chart-3: 45 35% 68%;
-    --chart-4: 220 25% 48%;
-    --chart-5: 200 25% 72%;
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 210 15% 92%;
-    --sidebar-primary: 200 40% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 160 32% 28%;
-    --sidebar-accent-foreground: 160 32% 88%;
-    --sidebar-border: 220 18% 18%;
-    --sidebar-ring: 200 40% 58%;
+    --sidebar-accent: 215 30% 25%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 215 30% 22%;
+    --sidebar-ring: 191 85% 42%;
   }
 }
 
@@ -82,8 +46,28 @@
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+}
+@layer components {
+ .shop-page { @apply p-5 md:p-9 lg:p-12 max-w-[1600px] mx-auto; }
+ .shop-page-header { @apply flex flex-wrap items-center justify-between gap-5 mb-8; }
+ .shop-page-header h1 { @apply text-3xl md:text-4xl font-semibold tracking-tight text-[#19354d]; }
+ .shop-eyebrow { @apply text-[10px] font-semibold tracking-[.2em] uppercase text-[#9b7b52] mb-3; }
+ .shop-panel { @apply bg-white border border-[#e8e1d6] rounded-xl shadow-sm; }
+ .shop-button { @apply inline-flex items-center justify-center gap-2 bg-[#19354d] text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-[#294d68] disabled:opacity-50 disabled:cursor-not-allowed; }
+ .shop-input { @apply w-full border border-[#dedbd4] rounded-lg px-3 py-2.5 bg-white text-sm text-[#19354d] focus:outline-none focus:ring-2 focus:ring-[#c5a477]/40; }
+ .shop-table { @apply w-full text-left text-sm; }
+ .shop-table th { @apply px-5 py-4 text-[10px] font-semibold uppercase tracking-wider text-[#8a8276] bg-[#faf9f6] border-b border-[#ebe5dc] whitespace-nowrap; }
+ .shop-table td { @apply px-5 py-4 border-b border-[#f0ede6] text-[#3b4c58]; }
+ .shop-pill { @apply inline-block bg-[#f1ece2] text-[#756247] rounded-full px-2.5 py-1 text-xs whitespace-nowrap; }
+ .shop-empty { @apply p-12 text-center text-sm text-slate-500; }
+ .shop-error { @apply rounded-lg border border-red-200 bg-red-50 p-4 mb-4 text-sm text-red-800; }
+}
+@media print {
+ nav, aside, [data-no-print] { display:none !important; }
+ body { background:white !important; }
+ main { overflow:visible !important; padding:0 !important; }
 }

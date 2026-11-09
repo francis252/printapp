@@ -1,0 +1,41 @@
+{
+  "name": "ColorPalette",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "palette_type": {
+      "type": "string",
+      "enum": [
+        "thread",
+        "print"
+      ],
+      "description": "Thread color palette or CMYK/print color palette"
+    },
+    "colors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hex": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "palette_type"
+  ]
+}

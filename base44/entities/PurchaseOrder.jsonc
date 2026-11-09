@@ -1,0 +1,112 @@
+{
+  "name": "PurchaseOrder",
+  "type": "object",
+  "properties": {
+    "po_number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "quote_id": {
+      "type": "string"
+    },
+    "quote_number": {
+      "type": "string"
+    },
+    "job_id": {
+      "type": "string"
+    },
+    "job_number": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "vendor_name": {
+      "type": "string"
+    },
+    "vendor_email": {
+      "type": "string"
+    },
+    "vendor_phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Created",
+        "Ordered",
+        "Partially Received",
+        "Received",
+        "Cancelled"
+      ],
+      "default": "Created"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string"
+          },
+          "style_number": {
+            "type": "string"
+          },
+          "supplier_name": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "ordered": {
+            "type": "boolean",
+            "default": false
+          },
+          "qty_ordered": {
+            "type": "number",
+            "default": 0
+          },
+          "qty_on_backorder": {
+            "type": "number",
+            "default": 0
+          },
+          "backorder_date": {
+            "type": "string"
+          },
+          "received": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

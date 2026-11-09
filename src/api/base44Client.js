@@ -1,14 +1,3 @@
-import { createClient } from '@base44/sdk';
-import { appParams } from '@/lib/app-params';
-
-const { appId, token, functionsVersion, appBaseUrl } = appParams;
-
-//Create a client with authentication required
-export const base44 = createClient({
-  appId,
-  token,
-  functionsVersion,
-  serverUrl: '',
-  requiresAuth: false,
-  appBaseUrl
-});
+// Compatibility name only. Protected quote and mockup source stays unchanged.
+// All requests use Supabase; no Base44 SDK or backend is used.
+export { shop as base44 } from './shopClient';

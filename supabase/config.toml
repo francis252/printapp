@@ -1,0 +1,5 @@
+[functions.presentation-share]
+verify_jwt = false
+
+[functions.shop-integrations]
+verify_jwt = false

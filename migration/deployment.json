@@ -1,0 +1,52 @@
+{
+  "project_id": "bawmhatfwcxztduovlfo",
+  "project_name": "4R Business Hub",
+  "project_url": "https://bawmhatfwcxztduovlfo.supabase.co",
+  "schema_prefix": "shop_",
+  "migrations": [
+    {
+      "version": "20261109001516",
+      "name": "shop_management_foundation"
+    },
+    {
+      "version": "20261109001526",
+      "name": "shop_presentation_sharing"
+    }
+  ],
+  "functions": [
+    {
+      "name": "shop-integrations",
+      "version": 1,
+      "status": "ACTIVE",
+      "authentication": "validated user session and shop membership"
+    },
+    {
+      "name": "presentation-share",
+      "version": 1,
+      "status": "ACTIVE",
+      "authentication": "unguessable, unexpired share token; database snapshot scope"
+    }
+  ],
+  "verified": {
+    "all_6_shop_tables_have_rls": true,
+    "artwork_bucket_is_private": true,
+    "anonymous_table_access": false,
+    "anonymous_quote_conversion": false,
+    "unsigned_supplier_http": 401,
+    "invalid_presentation_token_http": 404,
+    "anonymous_records_http": 401
+  },
+  "owner_account": "assigned to the user-selected existing account; email verified",
+  "frontend": {
+    "status": "published privately",
+    "url": "https://four-r-shop-management.francis-roge-7253.chatgpt.site",
+    "site_project_id": "appgprj_6af112e444948191bb4afbe654430bd5",
+    "customer_share_links": "disabled on the private frontend",
+    "auth_redirect_allowlist": "dashboard return URL saved by owner",
+    "password_recovery": "email reset request and user-entered recovery form"
+  },
+  "business_records_imported": false,
+  "provider_credentials": "not configured or verified",
+  "existing_hub_tables": "not modified",
+  "owner_membership_verified": true
+}

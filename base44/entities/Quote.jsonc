@@ -1,0 +1,134 @@
+{
+  "name": "Quote",
+  "type": "object",
+  "properties": {
+    "quote_number": {
+      "type": "string"
+    },
+    "job_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Awaiting Approval",
+        "Approved",
+        "Rejected",
+        "Expired",
+        "Closed"
+      ],
+      "default": "Open"
+    },
+    "customer_id": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "sales_rep": {
+      "type": "string"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "ship_by_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "customer_po": {
+      "type": "string"
+    },
+    "store": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "internal_notes": {
+      "type": "string"
+    },
+    "terms": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "boolean",
+      "default": false
+    },
+    "requires_art_approval": {
+      "type": "boolean",
+      "default": false
+    },
+    "shipping": {
+      "type": "number",
+      "default": 0
+    },
+    "tax_rate": {
+      "type": "number",
+      "default": 0
+    },
+    "discount": {
+      "type": "number",
+      "default": 0
+    },
+    "deposit_percent": {
+      "type": "number",
+      "default": 50
+    },
+    "payments": {
+      "type": "number",
+      "default": 0
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "total": {
+      "type": "number",
+      "default": 0
+    },
+    "deposit_required": {
+      "type": "number",
+      "default": 0
+    },
+    "balance_due": {
+      "type": "number",
+      "default": 0
+    },
+    "approval_token": {
+      "type": "string"
+    },
+    "approved_at": {
+      "type": "string"
+    },
+    "rejected_at": {
+      "type": "string"
+    },
+    "sent_at": {
+      "type": "string"
+    },
+    "paid": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether payment has been received"
+    },
+    "paid_at": {
+      "type": "string",
+      "description": "ISO timestamp when payment was received"
+    },
+    "paid_amount_type": {
+      "type": "string",
+      "description": "deposit or full"
+    }
+  },
+  "required": [
+    "job_name"
+  ]
+}

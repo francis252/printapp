@@ -1,0 +1,56 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "style_number": {
+      "type": "string"
+    },
+    "supplier_id": {
+      "type": "string"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "base_price": {
+      "type": "number"
+    },
+    "cost_price": {
+      "type": "number"
+    },
+    "markup_percent": {
+      "type": "number",
+      "default": 125
+    },
+    "keywords": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "style_number"
+  ]
+}
