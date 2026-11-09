@@ -36,9 +36,16 @@
     "invalid_presentation_token_http": 404,
     "anonymous_records_http": 401
   },
-  "owner_account": "pending user selection and verified sign-in",
-  "frontend": "not published",
+  "owner_account": "assigned to the user-selected existing account; email verification pending",
+  "frontend": {
+    "status": "published privately",
+    "url": "https://four-r-shop-management.francis-roge-7253.chatgpt.site",
+    "site_project_id": "appgprj_6af112e444948191bb4afbe654430bd5",
+    "customer_share_links": "disabled on the private frontend",
+    "auth_redirect_allowlist": "prepared; awaiting action-time approval"
+  },
   "business_records_imported": false,
   "provider_credentials": "not configured or verified",
-  "existing_hub_tables": "not modified"
+  "existing_hub_tables": "not modified",
+  "owner_membership_verified": true
 }

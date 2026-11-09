@@ -2,7 +2,7 @@
 
 Fresh source baseline: `glossy-speed-sales-sync (5).zip`, supplied November 8, 2026.
 This is a staged migration of that app, not a rewrite of its quote or mockup workflow.
-The source is on GitHub draft PR #1. The two migrations and the `shop-integrations` and `presentation-share` Edge Functions are deployed to the existing 4R Business Hub Supabase project (`bawmhatfwcxztduovlfo`). The frontend has not been published. Owner membership and actual records/media have not been imported. See `migration/deployment.json` for verified deployment state.
+The source is on GitHub draft PR #1. The two migrations and the `shop-integrations` and `presentation-share` Edge Functions are deployed to the existing 4R Business Hub Supabase project (`bawmhatfwcxztduovlfo`). The frontend is published privately at https://four-r-shop-management.francis-roge-7253.chatgpt.site. The selected existing account has owner membership. Email verification and the new auth return URL remain pending; actual business records/media have not been imported. See `migration/deployment.json` for verified deployment state.
 
 ## Run locally
 
@@ -57,3 +57,8 @@ Legacy source records use text IDs. `shop_records` keeps these IDs and unknown f
 The Supabase advisor flags the intentionally exposed sharing RPCs because they use `SECURITY DEFINER`. `shop_get_presentation_share` and feedback submission require an unexpired token; authenticated conversion and share-management RPCs check actual shop membership and ownership. These findings were reviewed alongside live deny-path checks and the local isolation tests; they are not an assertion that all project advisories are resolved. See [public RPC advisory guidance](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable) and [authenticated RPC guidance](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable).
 
 Existing Hub advisories and project-wide Auth settings were not changed by this migration. The project reports [leaked-password protection disabled](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection). Owner account selection, verified sign-in and final authenticated staging checks remain required before application cutover.
+
+
+## Private frontend
+
+The published site is owner-private and uses the existing Supabase backend. Customer share links are disabled on this private frontend; customer previews and Print/Save PDF remain available. The existing owner account must verify its email before sign-in. The login page includes a user-operated verification resend button. The exact `/dashboard` authentication return URL is prepared in Supabase but has not been saved pending approval. No verification email has been sent by the agent. Publishing is a separate step from pushing to the GitHub review branch; a GitHub push does not automatically redeploy this Site.
