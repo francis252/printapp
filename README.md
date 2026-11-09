@@ -2,13 +2,13 @@
 
 Fresh source baseline: `glossy-speed-sales-sync (5).zip`, supplied November 8, 2026.
 This is a staged migration of that app, not a rewrite of its quote or mockup workflow.
-This package is prepared for a GitHub review branch. It has not been deployed to a live Supabase project.
+The source is on GitHub draft PR #1. The two migrations and the `shop-integrations` and `presentation-share` Edge Functions are deployed to the existing 4R Business Hub Supabase project (`bawmhatfwcxztduovlfo`). The frontend has not been published. Owner membership and actual records/media have not been imported. See `migration/deployment.json` for verified deployment state.
 
 ## Run locally
 
 1. `npm ci`
 2. Copy `.env.example` to `.env.local`. Use a Supabase project URL and a publishable key (or legacy anon key). Never use a secret/service-role key in Vite.
-3. Apply the two `supabase/migrations` files in order to an isolated staging project. They create only `shop_*` tables/functions and a private `shop-files` bucket. Do not apply the earlier, incompatible normalized schema from the first Claude package.
+3. For a new staging project, apply the two `supabase/migrations` files in order. They have already been applied to the selected 4R Business Hub project; do not run them again there. They create only `shop_*` tables/functions and a private `shop-files` bucket. Do not apply the earlier, incompatible normalized schema from the first Claude package.
 4. Create the owner's Supabase Auth account through an approved administrator flow. Review `supabase/bootstrap/owner.REVIEW_ONLY.sql`, substitute the real user UUID, then run it as an administrator. Client login never grants shop membership automatically.
 5. `npm run dev`
 
@@ -26,9 +26,9 @@ Use `npm test` for the adapter, protected-source, reporting and local database c
 
 ## Enable customer links after staging verification
 
-Deploy `supabase/functions/presentation-share` with the supplied `supabase/config.toml`. Anonymous access to this function is intentional: every read or feedback submission requires a live unguessable share token. It never grants anonymous access to shop records or artwork storage.
+The `presentation-share` function is deployed to 4R Business Hub. For a new staging project, deploy `supabase/functions/presentation-share` with the supplied `supabase/config.toml`. Anonymous access to this function is intentional: every read or feedback submission requires a live unguessable share token. It never grants anonymous access to shop records or artwork storage.
 
-The function uses `SUPABASE_URL` and modern named keys from `SUPABASE_PUBLISHABLE_KEYS` and `SUPABASE_SECRET_KEYS`, with legacy `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` as compatibility fallbacks. Only this server function uses privileged storage signing; the supplier/email adapter uses the caller's user session. It signs only image references in a token-authorized database snapshot. Run hosted security checks before setting `VITE_PRESENTATION_SHARING_ENABLED=true` and rebuilding.
+The function uses `SUPABASE_URL` and modern named keys from `SUPABASE_PUBLISHABLE_KEYS` and `SUPABASE_SECRET_KEYS`, with legacy `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` as compatibility fallbacks. Only this server function uses privileged storage signing; the supplier/email adapter uses the caller's user session. It signs only image references in a token-authorized database snapshot. Live negative checks passed for anonymous record access, unauthenticated supplier calls and invalid share tokens. Set `VITE_PRESENTATION_SHARING_ENABLED=true` only for a frontend targeting the migrated project. Owner-authenticated sharing and storage uploads still require end-to-end verification after the real owner signs in.
 
 Revoking a link blocks fresh reads and feedback immediately. Already issued image URLs can remain valid for up to 10 minutes. Internal artwork URLs last one hour; reload a saved record to renew them. Existing external Base44 file URLs are not copied by this code export; original media must be migrated separately.
 
@@ -40,7 +40,7 @@ Revoking a link blocks fresh reads and feedback immediately. Already issued imag
 - Team invitations and role changes need a secured administrator endpoint; the team roster is read-only. Normal clients cannot edit membership permissions.
 - No P&L, balance sheet, trial balance, general ledger, job gross-profit, QuickBooks export or commission calculation is claimed. Those need real cost/ledger mappings and commission rules. The reports screen explains this rather than inventing figures.
 - Task due dates are stored but do not deliver notifications. Invoice/expense payments are manual records and do not move money or send invoices.
-- Customer sharing and the Edge Function have not been deployed or tested on hosted Supabase. End-to-end authenticated browser workflows, PDF pagination and mobile mockup interactions need staging verification. The setup screen was inspected in the browser; the production frontend build passes.
+- The schema and both Edge Functions are deployed to hosted Supabase. Anonymous record access is denied, unsigned supplier requests return 401, and invalid presentation tokens return 404. End-to-end owner-authenticated browser workflows, PDF pagination and mobile mockup interactions still need staging verification. The setup screen was inspected in the browser; the production frontend build passes.
 
 ## Findings retained from the original application
 
@@ -51,3 +51,9 @@ The original mockup builder saves a rendered PNG and decoration colors. It does 
 Original `QuoteBuilder.computeTotals` omits per-line discount factors while `QuoteTotalsBar` includes them. Original saves also update a quote and replace lines through separate calls, not a transaction. Both behaviors are preserved because the quote files are protected; review these separately before production cutover. Browser-back navigation may still bypass the presentation's sidebar/close dirty warning, so save before using Back.
 
 Legacy source records use text IDs. `shop_records` keeps these IDs and unknown fields in JSONB so original relationships and payloads survive import. This is a compatibility-first schema based on the supplied frontend payloads and entity definitions. It does not claim to implement a full accounting ledger.
+
+## Hosted access review
+
+The Supabase advisor flags the intentionally exposed sharing RPCs because they use `SECURITY DEFINER`. `shop_get_presentation_share` and feedback submission require an unexpired token; authenticated conversion and share-management RPCs check actual shop membership and ownership. These findings were reviewed alongside live deny-path checks and the local isolation tests; they are not an assertion that all project advisories are resolved. See [public RPC advisory guidance](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable) and [authenticated RPC guidance](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable).
+
+Existing Hub advisories and project-wide Auth settings were not changed by this migration. The project reports [leaked-password protection disabled](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection). Owner account selection, verified sign-in and final authenticated staging checks remain required before application cutover.

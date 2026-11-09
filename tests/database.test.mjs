@@ -16,8 +16,8 @@ test('database isolation, revision checks and transactional presentation convers
  alter table storage.objects enable row level security;
  grant select,insert on storage.objects to authenticated;
  create function storage.foldername(text) returns text[] language sql immutable as $$select (string_to_array($1,'/'))[1:array_length(string_to_array($1,'/'),1)-1]$$;`);
- await db.exec(readFileSync(new URL('../supabase/migrations/202611080001_shop.sql',import.meta.url),'utf8'));
- await db.exec(readFileSync(new URL('../supabase/migrations/202611080002_presentation_sharing.sql',import.meta.url),'utf8'));
+ await db.exec(readFileSync(new URL('../supabase/migrations/20261109001516_shop_management_foundation.sql',import.meta.url),'utf8'));
+ await db.exec(readFileSync(new URL('../supabase/migrations/20261109001526_shop_presentation_sharing.sql',import.meta.url),'utf8'));
  await db.query('insert into auth.users values ($1),($2),($3)',[U1,U2,EMP]);
  await db.query("insert into shop_organizations(id,name) values($1,'Shop A'),($2,'Shop B')",[O1,O2]);
  await db.query("insert into shop_members values($1,$2,'owner','A'),($3,$4,'owner','B'),($1,$5,'employee','E')",[O1,U1,O2,U2,EMP]);
